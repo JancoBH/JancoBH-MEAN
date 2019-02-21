@@ -8,6 +8,13 @@ export class ContactService {
 
   constructor(private http: HttpClient) {}
 
+  getTutoriales(): Promise<any[]> {
+    return this.http.get('/api/tutoriales')
+      .toPromise()
+      .then(response => response as any[])
+      .catch(this.handleError);
+  }
+
   // get("/api/contacts")
   getContacts(): Promise<Contact[]> {
     return this.http.get(this.contactsUrl)
