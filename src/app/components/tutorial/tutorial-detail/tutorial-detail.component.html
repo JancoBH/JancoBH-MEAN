@@ -1,0 +1,23 @@
+<section class="tutorial-header-content" [ngStyle]="{'background': 'linear-gradient(to right,' + tutorialData?.colors[0] + ', ' + tutorialData?.colors[1] + ')'}">
+  <div fxFlex="10" fxHide.sm fxFlex.xs="5"></div>
+
+  <div fxFlex="80" fxFlex.xs="90">
+    <h1>{{tutorialData?.title}}</h1>
+    <p>
+      {{tutorialData?.desc}}
+    </p>
+    <div class="button-row">
+      <button mat-stroked-button color="warn" style="border-color: rgba(255, 255, 255, 0.8);">Ver Demo</button>
+      <button mat-raised-button color="warn">Mira el Código</button>
+    </div>
+  </div>
+
+  <div fxFlex="10" fxHide.sm fxFlex.xs="5"></div>
+
+</section>
+
+<section class="tutorial-detail-content">
+
+  <h1>Próximamente estará disponible el contenido</h1>
+
+</section>
