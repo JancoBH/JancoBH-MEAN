@@ -7,15 +7,17 @@ import { ContactListComponent } from './components/contacts/contact-list/contact
 import { ContactDetailsComponent } from './components/contacts/contact-details/contact-details.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactListComponent,
-    ContactDetailsComponent
+    ContactDetailsComponent,
+    AboutComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     FormsModule,
     HttpClientModule
