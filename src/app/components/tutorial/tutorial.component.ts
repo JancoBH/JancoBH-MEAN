@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
+import {TutorialesService} from './tutoriales.service';
 
 @Component({
   selector: 'app-tutorial',
@@ -8,12 +8,21 @@ import {Observable} from 'rxjs';
 })
 export class TutorialComponent implements OnInit {
 
-  tutorials: Observable<any[]>;
+  tutorials: any[];
 
   constructor(
+    private tutorialesService: TutorialesService
   ) {}
 
   ngOnInit() {
+    this.tutorialesService
+      .getContacts()
+      .then((tutoriales: any[]) => {
+        console.log(tutoriales);
+        this.tutorials = tutoriales.map((tutorial) => {
+          return tutorial;
+        });
+      });
   }
 
 }
