@@ -18,7 +18,7 @@ export class TutorialDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private title: Title,
-    private seo: SeoService,
+    private seo: SeoService
   ) { }
 
   ngOnInit() {
