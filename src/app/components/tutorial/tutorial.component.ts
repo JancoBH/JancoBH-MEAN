@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TutorialesService} from './tutoriales.service';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-tutorial',
@@ -15,13 +16,11 @@ export class TutorialComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.tutorialesService
-      .getTutoriales()
-      .then((tutoriales: any[]) => {
-        this.tutorials = tutoriales.map((tutorial) => {
-          return tutorial;
-        });
-      });
+    this.tutorialesService.getTutoriales().pipe(take(1)).subscribe(
+      res => {
+        this.tutorials = res;
+      }
+    );
   }
 
 }

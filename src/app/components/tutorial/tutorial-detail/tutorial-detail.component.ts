@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import {TutorialesService} from '../tutoriales.service';
 import {SeoService} from '../../../services/seo.service';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-tutorial-detail',
@@ -24,9 +25,8 @@ export class TutorialDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       params => {
-        this.tutorialesService
-          .getTutorial(params.id)
-          .then((tutorial: any[]) => {
+        this.tutorialesService.getTutorial(params.id).pipe(take(1)).subscribe(
+          tutorial => {
             this.tutorialData = tutorial;
             this.title.setTitle(this.tutorialData.title);
             this.seo.generateTags({
@@ -35,8 +35,8 @@ export class TutorialDetailComponent implements OnInit {
               image: this.tutorialData.img,
               slug: `tutorial/${params.id}`
             });
-
-          });
+          }
+        );
       }
     );
 
