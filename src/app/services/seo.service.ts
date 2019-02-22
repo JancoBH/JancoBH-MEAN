@@ -11,9 +11,9 @@ export class SeoService {
   generateTags(config) {
     // default values
     config = {
-      title: '',
-      description: '',
-      image: '',
+      title: 'JancoBH',
+      description: 'Test en SEO Service',
+      image: 'https://firebasestorage.googleapis.com/v0/b/jancobh-2.appspot.com/o/general%2Ffreebay.png?alt=media&token=75bf00ca-41ad-42ce-8b8b-69a7c0420113',
       slug: '',
       ...config
     };
