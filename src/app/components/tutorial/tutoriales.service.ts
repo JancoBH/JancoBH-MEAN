@@ -6,7 +6,11 @@ import {HttpClient} from '@angular/common/http';
 })
 export class TutorialesService {
 
-  private contactsUrl = '/api/tutoriales';
+  private tutorialesUrl = '/api/tutoriales';
+
+  constructor(
+    private http: HttpClient
+  ) { }
 
   static handleError(error: any): Promise<any> {
     const errMsg = (error.message) ? error.message :
@@ -15,13 +19,17 @@ export class TutorialesService {
     return Promise.reject(errMsg);
   }
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  // get("/api/tutoriales")
+  getTutoriales(): Promise<any[]> {
+    return this.http.get(this.tutorialesUrl)
+      .toPromise()
+      .then(response => response as any[])
+      .catch(TutorialesService.handleError);
+  }
 
-  // get("/api/contacts")
-  getContacts(): Promise<any[]> {
-    return this.http.get(this.contactsUrl)
+  // get("/api/tutoriales/id")
+  getTutorial(id): Promise<any[]> {
+    return this.http.get(`${this.tutorialesUrl}/${id}`)
       .toPromise()
       .then(response => response as any[])
       .catch(TutorialesService.handleError);

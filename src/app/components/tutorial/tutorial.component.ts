@@ -16,9 +16,8 @@ export class TutorialComponent implements OnInit {
 
   ngOnInit() {
     this.tutorialesService
-      .getContacts()
+      .getTutoriales()
       .then((tutoriales: any[]) => {
-        console.log(tutoriales);
         this.tutorials = tutoriales.map((tutorial) => {
           return tutorial;
         });

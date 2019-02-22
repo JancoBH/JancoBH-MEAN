@@ -4,9 +4,10 @@ import {enableProdMode} from '@angular/core';
 import {ngExpressEngine} from '@nguniversal/express-engine';
 // Import module map for lazy loading
 import {provideModuleMap} from '@nguniversal/module-map-ngfactory-loader';
+import apiRoutes from './src/server/routes/api.routes';
 
 import * as express from 'express';
-import * as mongodb from 'mongodb';
+import * as mongoose from 'mongoose';
 import {join} from 'path';
 
 // Faster server renders w/ Prod mode (dev mode never needed)
@@ -14,12 +15,12 @@ enableProdMode();
 
 // Express server
 const app = express();
-const ObjectID = mongodb.ObjectID;
 
-const CONTACTS_COLLECTION = 'contacts';
 const PORT = process.env.PORT || 4000;
-const DB = process.env.MONGODB_URI || 'mongodb://heroku_863442xw:r6fa3as9ig2a2ng4omvccr5fnb@ds141815.mlab.com:41815/heroku_863442xw';
 const DIST_FOLDER = join(process.cwd(), 'dist/browser');
+const MONGODB_HOST = process.env.MONGODB_HOST || 'heroku_863442xw';
+const MONGODB_PORT = process.env.MONGODB_PORT || 'r6fa3as9ig2a2ng4omvccr5fnb@ds141815.mlab.com:41815';
+const MONGODB_NAME = process.env.MONGODB_NAME || 'heroku_863442xw';
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
 const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require('./dist/server/main');
@@ -35,6 +36,14 @@ app.engine('html', ngExpressEngine({
 app.set('view engine', 'html');
 app.set('views', DIST_FOLDER);
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
+app.use('/api', apiRoutes);
+
 // Example Express Rest API endpoints
 // app.get('/api/**', (req, res) => { });
 // Serve static files from /browser
@@ -48,110 +57,13 @@ app.get('*', (req, res) => {
 });
 
 // Start up the Node server && MongoDB
+mongoose.connect(`mongodb://${MONGODB_HOST}:${MONGODB_PORT}/${MONGODB_NAME}`)
+  .then(() => {
+    console.log(`Connected to MongoDB in MLab`);
+  })
+  .catch(err => console.error(err));
 
-let db;
-
-mongodb.MongoClient.connect(DB, (err, client) => {
-
-  if (err) {
-    console.log(err);
-    process.exit(1);
-  }
-
-  db = client.db();
-  console.log('Database connection ready');
-
-  app.listen(PORT, () => {
-    console.log(`Node Express server listening on http://localhost:${PORT}`);
-  });
-});
-
-// CONTACTS API ROUTES BELOW
-
-// Generic error handler used by all endpoints.
-function handleError(res, reason, message, code?) {
-  console.log('ERROR: ' + reason);
-  res.status(code || 500).json({error: message});
-}
-
-/*  "/api/contacts"
- *    GET: finds all contacts
- *    POST: creates a new contact
- */
-//
-// app.get('/api/tutoriales', (req, res) => {
-//   db.collection('tutoriales').find({}).toArray((err, docs) => {
-//     if (err) {
-//       handleError(res, err.message, 'Failed to get contacts.');
-//     } else {
-//       res.status(200).json(docs);
-//     }
-//   });
-// });
-
-app.get('/api/contacts', (req, res) => {
-  db.collection(CONTACTS_COLLECTION).find({}).toArray((err, docs) => {
-    if (err) {
-      handleError(res, err.message, 'Failed to get contacts.');
-    } else {
-      res.status(200).json(docs);
-    }
-  });
-});
-
-app.post('/api/contacts', (req, res) => {
-  const newContact = req.body;
-  newContact.createDate = new Date();
-
-  if (!req.body.name) {
-    handleError(res, 'Invalid user input', 'Must provide a name.', 400);
-  } else {
-    db.collection(CONTACTS_COLLECTION).insertOne(newContact, (err, doc) => {
-      if (err) {
-        handleError(res, err.message, 'Failed to create new contact.');
-      } else {
-        res.status(201).json(doc.ops[0]);
-      }
-    });
-  }
-});
-
-/*  "/api/contacts/:id"
- *    GET: find contact by id
- *    PUT: update contact by id
- *    DELETE: deletes contact by id
- */
-
-app.get('/api/contacts/:id', (req, res) => {
-  db.collection(CONTACTS_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, (err, doc) => {
-    if (err) {
-      handleError(res, err.message, 'Failed to get contact');
-    } else {
-      res.status(200).json(doc);
-    }
-  });
-});
-
-app.put('/api/contacts/:id', (req, res) => {
-  const updateDoc = req.body;
-  delete updateDoc._id;
-
-  db.collection(CONTACTS_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, updateDoc, (err, doc) => {
-    if (err) {
-      handleError(res, err.message, 'Failed to update contact');
-    } else {
-      updateDoc._id = req.params.id;
-      res.status(200).json(updateDoc);
-    }
-  });
-});
-
-app.delete('/api/contacts/:id', (req, res) => {
-  db.collection(CONTACTS_COLLECTION).deleteOne({_id: new ObjectID(req.params.id)}, (err, result) => {
-    if (err) {
-      handleError(res, err.message, 'Failed to delete contact');
-    } else {
-      res.status(200).json(req.params.id);
-    }
-  });
+// Start up the Node server
+app.listen(PORT, () => {
+  console.log(`Node Express server listening on http://localhost:${PORT}`);
 });

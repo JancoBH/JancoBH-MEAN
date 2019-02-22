@@ -8,7 +8,7 @@ import {ContactoComponent} from './components/contacto/contacto.component';
 import {AboutComponent} from './about/about.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent, pathMatch: 'full'},
+  {path: '', component: HomeComponent},
   {path: 'blog', component: BlogComponent},
   {path: 'tutorial', loadChildren: './components/tutorial/tutorial.module#TutorialModule'},
   {path: 'portfolio', component: PortafoliosComponent},
