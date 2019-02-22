@@ -30,7 +30,7 @@ export class TutorialDetailComponent implements OnInit {
             this.title.setTitle(this.tutorialData.title);
             this.meta.addTags([
               { name: 'twitter:card', content: 'summary' },
-              { name: 'og:url', content: `/tutorial/${this.tutorialData.id}` },
+              { name: 'og:url', content: `/tutorial/${params.id}` },
               { name: 'og:title', content: this.tutorialData.title },
               { name: 'og:description', content: this.tutorialData.desc },
               { name: 'og:image', content: this.tutorialData.img }
