@@ -21,7 +21,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import {AboutComponent} from './about/about.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
@@ -37,8 +36,7 @@ library.add(faTwitter, faLinkedin, faGithub);
     FooterComponent,
     PortafoliosComponent,
     ContactoComponent,
-    ComunidadComponent,
-    AboutComponent
+    ComunidadComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

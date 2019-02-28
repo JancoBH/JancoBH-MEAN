@@ -31,14 +31,14 @@
 
   <div fxLayout="row wrap" style="justify-content: center; align-items: center;">
 
-    <div fxFlex="10" fxHide.sm fxFlex.xs="5"></div>
+    <div fxFlex="10" fxFlex.sm="5" fxFlex.xs="5"></div>
 
-    <div fxFlex="80" fxFlex.sm="100" fxFlex.xs="90">
+    <div fxFlex="80" fxFlex.sm="90" fxFlex.xs="90">
 
       <div fxLayout="row wrap" style="justify-content: center;">
 
-        <div fxFlex="25" fxFlex.md="33.33" fxFlex.sm="50" fxFlex.xs="100" *ngFor="let tuto of tutorials">
-          <a [routerLink]="['/tutorial/' + tuto._id]" style="text-decoration: none">
+        <div fxFlex="20" fxFlex.lg="25" fxFlex.md="33.33" fxFlex.sm="50" fxFlex.xs="100" *ngFor="let tuto of tutorials">
+          <a [routerLink]="['/tutorial/' + tuto._id]" style="text-decoration: none" [attr.aria-label]="'Tutorial ' + tuto.title">
             <mat-card style="margin: 10px 10px;">
               <img mat-card-image [src]="tuto.img" [alt]="tuto.title">
               <mat-card-content class="tutorial-content">
@@ -52,7 +52,7 @@
 
     </div>
 
-    <div fxFlex="10" fxHide.sm fxFlex.xs="5"></div>
+    <div fxFlex="10" fxFlex.sm="5" fxFlex.xs="5"></div>
 
   </div>
 
@@ -76,9 +76,9 @@
 
       <p>
         Más información sobre mi en:
-        <a href="https://twitter.com/JancoBH" style="color: white" target="_blank"><fa-icon style="margin: 0 5px;" [icon]="['fab', 'twitter']" size="2x"></fa-icon></a>
-        <a href="https://www.linkedin.com/in/jancobh/" style="color: white" target="_blank"><fa-icon style="margin: 0 5px;" [icon]="['fab', 'linkedin']" size="2x"></fa-icon></a>
-        <a href="https://github.com/JancoBH" style="color: white" target="_blank"><fa-icon style="margin: 0 5px;" [icon]="['fab', 'github']" size="2x"></fa-icon></a>
+        <a href="https://twitter.com/JancoBH" aria-label="Twitter" rel="noopener noreferrer" style="color: white" target="_blank"><fa-icon style="margin: 0 5px;" [icon]="['fab', 'twitter']" size="2x"></fa-icon></a>
+        <a href="https://www.linkedin.com/in/jancobh/" aria-label="LinkedIn" rel="noopener noreferrer" style="color: white" target="_blank"><fa-icon style="margin: 0 5px;" [icon]="['fab', 'linkedin']" size="2x"></fa-icon></a>
+        <a href="https://github.com/JancoBH" style="color: white" aria-label="GitHub" rel="noopener noreferrer" target="_blank"><fa-icon style="margin: 0 5px;" [icon]="['fab', 'github']" size="2x"></fa-icon></a>
       </p>
 
     </div>
@@ -112,13 +112,13 @@
 
     <div fxFlex="10" fxHide.sm fxFlex.xs="5"></div>
 
-    <div fxFlex="80" fxFlex.sm="100" fxFlex.xs="90">
+    <div fxFlex="80" fxFlex.sm="80" fxFlex.xs="90">
 
       <div fxLayout="row wrap" style="justify-content: center;">
 
-        <div fxFlex="20" fxFlex.md="25" fxFlex.sm="33.33" fxFlex.xs="100" *ngFor="let b of blog">
+        <div fxFlex="20" fxFlex.lg="25" fxFlex.md="33.33" fxFlex.sm="50" fxFlex.xs="100" *ngFor="let b of blog">
           <mat-card style="margin: 10px 10px;">
-            <img mat-card-image src="{{b.img}}" alt="{{b.title}}">
+            <img mat-card-image [src]="b.img" [alt]="b.title">
             <mat-card-content class="blog-content">
               <p>{{b.title}}</p>
             </mat-card-content>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Title, Meta } from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 import {take} from 'rxjs/operators';
 import {TutorialesService} from '../tutorial/tutoriales.service';
+import {SeoService} from '../../services/seo.service';
 
 @Component({
   selector: 'app-home',
@@ -33,20 +34,19 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private title: Title,
-    private meta: Meta,
+    private seo: SeoService,
     private tutorialesService: TutorialesService
   ) {
   }
 
   ngOnInit() {
-    // this.title.setTitle('');
-    // this.meta.addTags([
-    //   { name: 'twitter:card', content: 'summary' },
-    //   { name: 'og:url', content: '/about' },
-    //   { name: 'og:title', content: '' },
-    //   { name: 'og:description', content: '' },
-    //   { name: 'og:image', content: '' }
-    // ]);
+    this.title.setTitle('JancoBH');
+    this.seo.generateTags({
+      title: 'JancoBH',
+      description: 'Web JancoBH',
+      image: 'https://firebasestorage.googleapis.com/v0/b/jancobh-2.appspot.com/o/general%2Ffreebay.png?alt=media&token=75bf00ca-41ad-42ce-8b8b-69a7c0420113',
+      slug: ``
+    });
 
     this.tutorialesService.getTutoriales().pipe(take(1)).subscribe(
       res => {

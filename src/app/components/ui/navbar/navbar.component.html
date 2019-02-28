@@ -2,23 +2,26 @@
   <mat-toolbar-row>
     <div fxFlex="15%" fxFlex.md="5%" fxHide.sm fxHide.xs></div>
     <div class="nav-container" fxFlex="70%" fxFlex.md="90%" fxFlex.sm="100%">
-      <div style="flex: 1;">
-        <!--<span>-->
-          <!--JancoBH-->
-        <!--</span>-->
-        <a mat-button routerLink="">Inicio</a>
-        <!--<a mat-button routerLink="portfolio">Portafolios</a>-->
-        <a mat-button routerLink="tutorial">Tutoriales</a>
-        <a mat-button routerLink="">Tags</a>
-        <a mat-button routerLink="blog" fxHide.xs>Blog</a>
-        <a mat-button routerLink="comunidad" fxHide.xs>Comunidad</a>
-        <a mat-button routerLink="contact" fxHide.xs>Contacto</a>
-        <a mat-button routerLink="about" fxHide.xs>About</a>
+      <div style="flex: 1; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          JancoBH
+        </div>
+        <div>
+          <a mat-button routerLink="" aria-label="Inicio">Inicio</a>
+          <!--<a mat-button routerLink="portfolio" aria-label="Portfolio">Portafolios</a>-->
+          <a mat-button routerLink="tutorial" aria-label="Tutoriales">Tutoriales</a>
+          <!--<a mat-button routerLink="" aria-label="Tags">Tags</a>-->
+          <a mat-button routerLink="blog" aria-label="Blog">Blog</a>
+          <a mat-button routerLink="comunidad" aria-label="Comunidad" fxHide.xs>Comunidad</a>
+          <a mat-button routerLink="contact" aria-label="Contacto" fxHide.xs>Contacto</a>
+        </div>
+
+        <div>
+          <a href="https://twitter.com/JancoBH" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><img src="assets/img/twitter.svg" class="social-img" alt="Twitter"></a>
+        </div>
+
       </div>
-      <!--<a mat-button routerLink="foro">Foro</a>-->
-      <div class="float-right">
-        <a href="https://twitter.com/JancoBH" target="_blank" rel="noopener noreferrer"><img src="assets/img/twitter.svg" class="social-img" alt="Twitter"></a>
-      </div>
+
     </div>
     <div fxFlex="15%" fxFlex.md="5%" fxHide.sm fxHide.xs></div>
   </mat-toolbar-row>
