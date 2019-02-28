@@ -14,7 +14,7 @@ export class HttpService {
 
   request(requestSettings: any): Observable<any> {
 
-    const server = '';
+    const server = 'http://localhost:4000';
 
     if (!requestSettings.method || requestSettings.method.toLowerCase() === 'get') {
       return this.http.get(

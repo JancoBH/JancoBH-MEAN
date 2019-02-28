@@ -40,14 +40,14 @@
     "express": "^4.16.4",
     "hammerjs": "^2.0.8",
     "mongodb": "^3.1.13",
-    "mongoose": "^5.4.14",
+    "mongoose": "^5.4.16",
     "prerender-node": "^3.2.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.13.0",
+    "@angular-devkit/build-angular": "^0.13.3",
     "@angular/cli": "~7.3.3",
     "@angular/compiler-cli": "~7.2.7",
     "@angular/language-service": "~7.2.7",

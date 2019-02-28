@@ -14,7 +14,7 @@
         <ul class="content__container__list">
           <li class="content__container__list__item">Angular !</li>
           <li class="content__container__list__item">Firebase !</li>
-          <li class="content__container__list__item">Frontend !</li>
+          <li class="content__container__list__item">Front-end !</li>
           <li class="content__container__list__item">Javascript !</li>
         </ul>
       </div>
@@ -40,7 +40,7 @@
         <div fxFlex="20" fxFlex.md="33.33" fxFlex.sm="50" fxFlex.xs="100" *ngFor="let tuto of tutorials | async">
           <a routerLink="/tutorial/{{tuto.$key}}" style="text-decoration: none">
             <mat-card style="margin: 10px 10px;">
-              <img mat-card-image src="{{tuto.img}}" alt="{{tuto.title}}">
+              <img mat-card-image [src]="tuto.img" [alt]="tuto.title">
               <mat-card-content class="tutorial-content">
                 <p>{{tuto.desc}}</p>
               </mat-card-content>
@@ -67,7 +67,7 @@
       <h1>¿Quien soy?</h1>
 
       <p>
-        Hola, mi nombre es Janco Boscan, Soy Ingeniero de Computación y actualmente trabajo como Frontend Developer con Angular.
+        Hola, mi nombre es Janco Boscan, Soy Ingeniero de Computación que trabaja como un Front-end Developer.
       </p>
 
       <p>

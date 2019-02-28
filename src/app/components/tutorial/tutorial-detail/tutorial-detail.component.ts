@@ -35,16 +35,6 @@ export class TutorialDetailComponent implements OnInit {
               image: this.tutorialData.img,
               slug: `tutorial/${params.id}`
             });
-
-            this.title.setTitle('hola' + this.tutorialData.title);
-
-            this.seo.generateTags({
-              title: 'hola' + this.tutorialData.title,
-              description: this.tutorialData.desc,
-              image: this.tutorialData.img,
-              slug: `tutorial/${params.id}`
-            });
-
           }
         );
       }
