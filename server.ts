@@ -44,6 +44,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api', apiRoutes);
+app.use(require('prerender-node'));
 
 // Example Express Rest API endpoints
 // app.get('/api/**', (req, res) => { });
