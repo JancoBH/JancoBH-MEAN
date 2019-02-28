@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
 import { Title, Meta } from '@angular/platform-browser';
+import {take} from 'rxjs/operators';
+import {TutorialesService} from '../tutorial/tutoriales.service';
 
 @Component({
   selector: 'app-home',
@@ -9,17 +10,17 @@ import { Title, Meta } from '@angular/platform-browser';
 })
 export class HomeComponent implements OnInit {
 
-  tutorials: Observable<any[]>;
+  tutorials = [];
 
   techList = [
     {title: 'Angular', img: 'assets/img/angular.svg'},
+    {title: 'Vue', img: 'assets/img/Vue.png'},
     {title: 'Firebase', img: 'assets/img/firebase.svg'},
     {title: 'JavaScript', img: 'assets/img/js.svg'},
-    {title: 'Redux', img: 'assets/img/Redux.svg'},
-    {title: 'Material Design', img: 'assets/img/material.svg'},
-    {title: 'Angular Universal', img: 'assets/img/universal.svg'},
     {title: 'PWA', img: 'assets/img/pwa.svg'},
-    {title: 'RxJS', img: 'assets/img/rxjs.png'}
+    {title: 'Material Design', img: 'assets/img/material.svg'},
+    {title: 'Flutter', img: 'assets/img/Flutter.png'},
+    {title: 'Redux', img: 'assets/img/Redux.svg'}
   ];
 
   blog = [
@@ -32,7 +33,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private title: Title,
-    private meta: Meta
+    private meta: Meta,
+    private tutorialesService: TutorialesService
   ) {
   }
 
@@ -45,6 +47,13 @@ export class HomeComponent implements OnInit {
     //   { name: 'og:description', content: '' },
     //   { name: 'og:image', content: '' }
     // ]);
+
+    this.tutorialesService.getTutoriales().pipe(take(1)).subscribe(
+      res => {
+        this.tutorials = res;
+      }
+    );
+
   }
 
 }

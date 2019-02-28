@@ -13,7 +13,7 @@
 
         <ul class="content__container__list">
           <li class="content__container__list__item">Angular !</li>
-          <li class="content__container__list__item">Firebase !</li>
+          <li class="content__container__list__item">Web !</li>
           <li class="content__container__list__item">Front-end !</li>
           <li class="content__container__list__item">Javascript !</li>
         </ul>
@@ -37,8 +37,8 @@
 
       <div fxLayout="row wrap" style="justify-content: center;">
 
-        <div fxFlex="20" fxFlex.md="33.33" fxFlex.sm="50" fxFlex.xs="100" *ngFor="let tuto of tutorials | async">
-          <a routerLink="/tutorial/{{tuto.$key}}" style="text-decoration: none">
+        <div fxFlex="25" fxFlex.md="33.33" fxFlex.sm="50" fxFlex.xs="100" *ngFor="let tuto of tutorials">
+          <a [routerLink]="['/tutorial/' + tuto._id]" style="text-decoration: none">
             <mat-card style="margin: 10px 10px;">
               <img mat-card-image [src]="tuto.img" [alt]="tuto.title">
               <mat-card-content class="tutorial-content">
@@ -81,7 +81,6 @@
         <a href="https://github.com/JancoBH" style="color: white" target="_blank"><fa-icon style="margin: 0 5px;" [icon]="['fab', 'github']" size="2x"></fa-icon></a>
       </p>
 
-
     </div>
 
     <div fxFlex="50" fxFlex.xs="100"  class="por-que">
@@ -100,7 +99,6 @@
       </p>
 
     </div>
-
 
   </div>
 
@@ -151,7 +149,7 @@
       <mat-card>
         <div fxLayout="row wrap">
           <div *ngFor="let tech of techList" fxFlex="12.5" fxFlex.md="25" fxFlex.sm="25" fxFlex.xs="50" style="display: flex; flex-direction: column; align-items: center">
-            <img src="{{tech.img}}" alt="{{tech.title}}" style="height: 100px;">
+            <img [src]="tech.img" [alt]="tech.title" style="height: 100px;">
             <p>{{tech.title}}</p>
           </div>
         </div>

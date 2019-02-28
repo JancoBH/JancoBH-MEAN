@@ -22,6 +22,8 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import {AboutComponent} from './about/about.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 // Add an icon to the library for convenient access in other components
 library.add(faTwitter, faLinkedin, faGithub);
@@ -44,7 +46,8 @@ library.add(faTwitter, faLinkedin, faGithub);
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     { provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() }
