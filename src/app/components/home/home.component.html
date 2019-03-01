@@ -41,6 +41,7 @@
           <a [routerLink]="['/tutorial/' + tuto._id]" style="text-decoration: none" [attr.aria-label]="'Tutorial ' + tuto.title">
             <mat-card style="margin: 10px 10px;">
               <img mat-card-image [src]="tuto.img" [alt]="tuto.title">
+              <h3 style="margin-top: 0;">{{tuto.title}}</h3>
               <mat-card-content class="tutorial-content">
                 <p>{{tuto.desc}}</p>
               </mat-card-content>
@@ -116,7 +117,7 @@
 
       <div fxLayout="row wrap" style="justify-content: center;">
 
-        <div fxFlex="20" fxFlex.lg="25" fxFlex.md="33.33" fxFlex.sm="50" fxFlex.xs="100" *ngFor="let b of blog">
+        <div fxFlex="20" fxFlex.lg="33.33" fxFlex.md="33.33" fxFlex.sm="50" fxFlex.xs="100" *ngFor="let b of blog">
           <mat-card style="margin: 10px 10px;">
             <img mat-card-image [src]="b.img" [alt]="b.title">
             <mat-card-content class="blog-content">

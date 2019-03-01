@@ -13,6 +13,7 @@
           <a [routerLink]="['/tutorial/' + tuto._id]" [attr.aria-label]="'Tutorial ' + tuto.title" style="text-decoration: none">
             <mat-card style="margin: 10px 10px;">
               <img mat-card-image [src]="tuto.img" alt="{{tuto.title}}">
+              <h3 style="margin-top: 0;">{{tuto.title}}</h3>
               <mat-card-content class="tutorial-content">
                 <p>{{tuto.desc}}</p>
               </mat-card-content>
