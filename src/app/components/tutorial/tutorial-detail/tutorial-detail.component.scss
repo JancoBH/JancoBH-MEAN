@@ -25,28 +25,67 @@
   font-weight: 300;
 }
 
-.tutorial-header-content .button-row {
-  text-align: center;
-  padding-top: 20px;
+.info-tutorial-card {
+  width: 300px; position: absolute; right: 30px; top: 340px;
 }
 
-.tutorial-header-content .button-row button {
-  margin: 0 10px;
+.info-tutorial-card-container {
 }
+
+.info-tutorial-card-container .button-row {
+  text-align: center;
+}
+
+.info-tutorial-card-container .button-row button {
+  margin: 10px;
+}
+
+.lista-pasos {
+  padding: 0;
+  list-style: none;
+}
+
+.lista-pasos li {
+  padding: 8px 0; text-align: left;
+  font-weight: 900; font-size: 1.2rem;
+}
+
+.lista-pasos li a {
+  text-decoration: none;
+  color: #d32f2f;
+}
+
+// Tags
+
+.tags-container {
+  position: relative; top: 90px;
+  letter-spacing: .18ch;
+}
+
+
+
+
+// Contenido
 
 .tutorial-detail-content {
-  display: flex;
-  //align-items: center;
-  //align-content: center;
-  justify-content: center;
   min-height: 70vh;
   margin-top: 40px;
+  color: white;
+  line-height: 1.7;
 }
 
-.tutorial-detail-content h1 {
-  text-align: center;
-  color: white;
+.tutorial-detail-content p {
+  font-size: 1.1rem;
+}
+
+.tutorial-detail-content h2 {
   font-size: 2rem;
+  margin: 10px 0;
+}
+
+.tutorial-detail-content ul {
+  padding: 0;
+  list-style: none;
 }
 
 // xs

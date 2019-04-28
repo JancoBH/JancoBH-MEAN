@@ -25,21 +25,26 @@ export class TutorialDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       params => {
-        this.tutorialesService.getTutorial(params.id).pipe(take(1)).subscribe(
-          tutorial => {
-            this.tutorialData = tutorial;
-            this.title.setTitle(this.tutorialData.title);
-            this.seo.generateTags({
-              title: this.tutorialData.title,
-              description: this.tutorialData.desc,
-              image: this.tutorialData.img,
-              slug: `tutorial/${params.id}`
-            });
-          }
-        );
+        this.getTutorial(params.url);
       }
     );
 
+  }
+
+  getTutorial(url) {
+    this.tutorialesService.getTutorial(url).pipe(take(1)).subscribe(
+      tutorial => {
+        console.log(tutorial);
+        this.tutorialData = tutorial;
+        this.title.setTitle(this.tutorialData.title);
+        this.seo.generateTags({
+          title: this.tutorialData.title,
+          description: this.tutorialData.desc,
+          image: this.tutorialData.img,
+          slug: `tutorial/${url}`
+        });
+      }
+    );
   }
 
 }

@@ -20,9 +20,9 @@ export class TutorialesService {
     });
   }
 
-  getTutorial(id): Observable<any> {
+  getTutorial(url): Observable<any> {
     return this.http.request({
-      url: `/api/tutoriales/${id}`,
+      url: `/api/tutorial/${url}`,
       method: 'get'
     });
   }

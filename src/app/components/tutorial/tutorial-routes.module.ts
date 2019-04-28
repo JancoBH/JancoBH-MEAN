@@ -7,7 +7,7 @@ const tutorialRoutes: Routes = [
   {path: '', data: { title: 'Tutorial'},
     children: [
       {path: '', component: TutorialComponent, data: { title: ''}},
-      {path: ':id', component: TutorialDetailComponent, data: { title: ''}}
+      {path: ':url', component: TutorialDetailComponent, data: { title: ''}}
     ]},
 ];
 

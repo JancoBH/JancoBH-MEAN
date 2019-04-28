@@ -1,26 +1,17 @@
 import * as express from 'express';
-import { Tutoriales } from '../models/tutoriales.model';
+import TutorialesCtrl from '../controllers/tutoriales/tutoriales';
 
-const router = express.Router();
+export default function setRoutes(app) {
 
-router.get('/', (req, res) => {
-  res.send('api index');
-});
+  const router = express.Router();
 
-router.get('/tutoriales', async (req, res) => {
-  const tutoriales = await Tutoriales.find();
-  res.json(tutoriales);
-});
+  const tutorialesCtrl = new TutorialesCtrl();
 
-router.get('/tutoriales/:id', async (req, res, next) => {
-  try {
-    const id = req.params.id;
-    const tutoriales = await Tutoriales.findById(id);
-    res.json(tutoriales);
-  } catch (error) {
-    next(error);
-  }
+  // Tutoriales
+  router.route('/tutoriales').get(tutorialesCtrl.getAllTutoriales);
+  router.route('/tutorial/:url').get(tutorialesCtrl.getTutorialByUrl);
 
-});
+  // Apply the routes to our application with the prefix /api
+  app.use('/api', router);
 
-export default router;
+}

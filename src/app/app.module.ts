@@ -23,6 +23,8 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import {TagsComponent} from './components/tags/tags.component';
+import {DisqusModule} from 'ngx-disqus';
 
 // Add an icon to the library for convenient access in other components
 library.add(faTwitter, faLinkedin, faGithub);
@@ -36,7 +38,8 @@ library.add(faTwitter, faLinkedin, faGithub);
     FooterComponent,
     PortafoliosComponent,
     ContactoComponent,
-    ComunidadComponent
+    ComunidadComponent,
+    TagsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -45,7 +48,8 @@ library.add(faTwitter, faLinkedin, faGithub);
     HttpClientModule,
     SharedModule,
     FontAwesomeModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    DisqusModule.forRoot('jancobh')
   ],
   providers: [
     { provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() }

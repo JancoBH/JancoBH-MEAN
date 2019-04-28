@@ -1,12 +1,15 @@
 import { Schema, model } from 'mongoose';
 
-export const TutorialesSchema = new Schema({
+const tutorialesSchema = new Schema({
   _id: String,
+  url: { type: String, unique: true, lowercase: true, trim: true },
   title: String,
   desc: String,
   img: String,
-  colors: Object,
-  createDate: Object
+  colors: Array,
+  createdDate: Object
 });
 
-export const Tutoriales = model('Tutoriales', TutorialesSchema);
+const Tutoriales = model('Tutoriales', tutorialesSchema);
+
+export default Tutoriales;

@@ -4,20 +4,20 @@
     <div class="nav-container" fxFlex="70%" fxFlex.md="90%" fxFlex.sm="100%">
       <div style="flex: 1; display: flex; align-items: center; justify-content: space-between;">
         <div>
-          JancoBH
+          <a mat-button routerLink="" aria-label="Inicio">JancoBH</a>
         </div>
         <div>
-          <a mat-button routerLink="" aria-label="Inicio">Inicio</a>
           <!--<a mat-button routerLink="portfolio" aria-label="Portfolio">Portafolios</a>-->
           <a mat-button routerLink="tutorial" aria-label="Tutoriales">Tutoriales</a>
+          <a mat-button routerLink="tags" aria-label="Tags">Tags</a>
           <!--<a mat-button routerLink="" aria-label="Tags">Tags</a>-->
           <a mat-button routerLink="blog" aria-label="Blog">Blog</a>
-          <a mat-button routerLink="comunidad" aria-label="Comunidad" fxHide.xs>Comunidad</a>
-          <a mat-button routerLink="contact" aria-label="Contacto" fxHide.xs>Contacto</a>
+          <!--<a mat-button routerLink="comunidad" aria-label="Comunidad" fxHide.xs>Comunidad</a>-->
+          <!--<a mat-button routerLink="contact" aria-label="Contacto" fxHide.xs>Contacto</a>-->
         </div>
 
         <div>
-          <a href="https://twitter.com/JancoBH" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><img src="assets/img/twitter.svg" class="social-img" alt="Twitter"></a>
+          <a href="https://twitter.com/JancoBH" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><img [src]="'../../../../assets/img/twitter.svg'" class="social-img" alt="Twitter"></a>
         </div>
 
       </div>

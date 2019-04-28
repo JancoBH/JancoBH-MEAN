@@ -10,7 +10,7 @@
       <div fxLayout="row wrap" style="justify-content: center;">
 
         <div fxFlex="25" fxFlex.md="33.33" fxFlex.sm="50" fxFlex.xs="100" *ngFor="let tuto of tutorials">
-          <a [routerLink]="['/tutorial/' + tuto._id]" [attr.aria-label]="'Tutorial ' + tuto.title" style="text-decoration: none">
+          <a [routerLink]="['/tutorial/' + tuto.url]" [attr.aria-label]="'Tutorial ' + tuto.title" style="text-decoration: none">
             <mat-card style="margin: 10px 10px;">
               <img mat-card-image [src]="tuto.img" alt="{{tuto.title}}">
               <h3 style="margin-top: 0;">{{tuto.title}}</h3>
