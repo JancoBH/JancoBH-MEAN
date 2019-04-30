@@ -16,12 +16,12 @@ export class HomeComponent implements OnInit {
   techList = [
     {title: 'Angular', img: 'assets/img/angular.svg'},
     {title: 'Vue', img: 'assets/img/Vue.png'},
-    {title: 'Firebase', img: 'assets/img/firebase.svg'},
+    {title: 'React', img: 'assets/img/react.png'},
     {title: 'JavaScript', img: 'assets/img/js.svg'},
-    {title: 'PWA', img: 'assets/img/pwa.svg'},
-    {title: 'Material Design', img: 'assets/img/material.svg'},
-    {title: 'Flutter', img: 'assets/img/Flutter.png'},
-    {title: 'Redux', img: 'assets/img/Redux.svg'}
+    {title: 'NodeJS', img: 'assets/img/nodejs.svg'},
+    {title: 'Firebase', img: 'assets/img/firebase.svg'},
+    {title: 'Redux', img: 'assets/img/Redux.svg'},
+    {title: 'PWA', img: 'assets/img/pwa.svg'}
   ];
 
   blog = [
@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit {
     {title: 'Próximamente', img: 'https://firebasestorage.googleapis.com/v0/b/jancobh-2.appspot.com/o/proximamente.jpg?alt=media&token=9f56b23c-8c25-41c9-812d-1c4790451312'},
     {title: 'Próximamente', img: 'https://firebasestorage.googleapis.com/v0/b/jancobh-2.appspot.com/o/proximamente.jpg?alt=media&token=9f56b23c-8c25-41c9-812d-1c4790451312'},
     {title: 'Próximamente', img: 'https://firebasestorage.googleapis.com/v0/b/jancobh-2.appspot.com/o/proximamente.jpg?alt=media&token=9f56b23c-8c25-41c9-812d-1c4790451312'},
-    {title: 'Próximamente', img: 'https://firebasestorage.googleapis.com/v0/b/jancobh-2.appspot.com/o/proximamente.jpg?alt=media&token=9f56b23c-8c25-41c9-812d-1c4790451312'}
   ];
 
   constructor(
