@@ -45,7 +45,7 @@
     "express": "^4.16.4",
     "hammerjs": "^2.0.8",
     "mongodb": "^3.2.3",
-    "mongoose": "^5.5.5",
+    "mongoose": "^5.4.22",
     "ngx-disqus": "^2.4.3",
     "prerender-node": "^3.2.4",
     "rxjs": "~6.5.1",
