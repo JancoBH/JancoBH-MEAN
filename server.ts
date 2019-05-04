@@ -60,7 +60,7 @@ app.get('*', (req, res) => {
 // Start up the Node server && MongoDB
 // F4Ul15eut9ohc2Mz
 const uri = 'mongodb+srv://jancobh:janco23443970@jancobh-vuhbb.mongodb.net/JancoBH?retryWrites=true';
-mongoose.connect(uri)
+mongoose.connect(uri, { useNewUrlParser: true })
   .then(() => {
     console.log(`Connected to MongoDB in Atlas`);
     // Start up the Node server
