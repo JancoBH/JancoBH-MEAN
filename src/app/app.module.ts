@@ -7,7 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {SharedModule} from './shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {getSpanishPaginatorIntl} from './shared/spanish-paginator-intl';
-import {MatPaginatorIntl} from '@angular/material';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 import {HomeComponent} from './components/home/home.component';
 import {BlogComponent} from './components/blog/blog.component';
 import {NavbarComponent} from './components/ui/navbar/navbar.component';
