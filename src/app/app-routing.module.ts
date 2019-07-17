@@ -10,7 +10,7 @@ import {TagsComponent} from './components/tags/tags.component';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'blog', component: BlogComponent},
-  {path: 'tutorial', loadChildren: './components/tutorial/tutorial.module#TutorialModule'},
+  {path: 'tutorial', loadChildren: () => import('./components/tutorial/tutorial.module').then(m => m.TutorialModule)},
   {path: 'portfolio', component: PortafoliosComponent},
   {path: 'comunidad', component: ComunidadComponent},
   {path: 'contact', component: ContactoComponent},

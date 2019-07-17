@@ -8,6 +8,7 @@ import {provideModuleMap} from '@nguniversal/module-map-ngfactory-loader';
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as mongoose from 'mongoose';
+import * as compression from 'compression';
 import {join} from 'path';
 import setRoutes from './src/server/routes/api.routes';
 
@@ -48,6 +49,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 setRoutes(app);
 app.use(require('prerender-node'));
+app.use(compression());
 
 app.get('*.*', express.static(DIST_FOLDER, {
   maxAge: '10m'
