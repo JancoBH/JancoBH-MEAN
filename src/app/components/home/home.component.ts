@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     {title: 'JavaScript', img: 'assets/img/js.svg'},
     {title: 'NodeJS', img: 'assets/img/nodejs.svg'},
     {title: 'Firebase', img: 'assets/img/firebase.svg'},
-    {title: 'Redux', img: 'assets/img/Redux.svg'},
+    {title: 'Flutter', img: 'assets/img/Flutter.png'},
     {title: 'PWA', img: 'assets/img/pwa.svg'}
   ];
 

@@ -1,7 +1,6 @@
 {
   "rulesDirectory": [
-    "node_modules/codelyzer",
-    "node_modules/rxjs-tslint"
+    "node_modules/codelyzer"
   ],
   "rules": {
     "rxjs-collapse-imports": true,
