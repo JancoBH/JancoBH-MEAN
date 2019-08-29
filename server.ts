@@ -52,7 +52,7 @@ app.use(require('prerender-node'));
 app.use(compression());
 
 app.get('*.*', express.static(DIST_FOLDER, {
-  maxAge: '1d'
+  maxAge: '5d'
 }));
 
 // All regular routes use the Universal engine
