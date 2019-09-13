@@ -1,5 +1,42 @@
-<app-navbar></app-navbar>
+<div class="main-container" [class.is-mobile]="mobileQuery.matches">
 
-<router-outlet></router-outlet>
+  <mat-sidenav-container class="main-sidenav-container">
 
-<app-footer></app-footer>
+    <mat-sidenav #snav [mode]="'over'" style="width: 80%" [fixedInViewport]="mobileQuery.matches">
+      <div class="sidenav-content-container">
+        <a mat-button (click)="snav.toggle()" routerLink="" #rla1="routerLinkActive" [attr.cdkFocusRegionstart]="rla1.isActive ? '' : null" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" aria-label="Inicio">Inicio</a>
+        <a mat-button (click)="snav.toggle()" routerLink="tutorial" #rla2="routerLinkActive" [attr.cdkFocusRegionstart]="rla2.isActive ? '' : null" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" aria-label="Tutoriales">Tutoriales</a>
+        <a mat-button (click)="snav.toggle()" routerLink="tags" #rla3="routerLinkActive" [attr.cdkFocusRegionstart]="rla3.isActive ? '' : null" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" aria-label="Tags">Tags</a>
+        <a mat-button (click)="snav.toggle()" routerLink="blog" #rla4="routerLinkActive" [attr.cdkFocusRegionstart]="rla4.isActive ? '' : null" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" aria-label="Blog">Blog</a>
+      </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+      <app-navbar *ngIf="!mobileQuery.matches"></app-navbar>
+
+      <mat-toolbar color="primary" class="mobile-toolbar" *ngIf="mobileQuery.matches">
+
+        <div style="display: flex; align-items: center;">
+          <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+          <h1 class="app-name">JancoBH</h1>
+        </div>
+
+        <div>
+          <a href="https://twitter.com/JancoBH" aria-label="Twitter" rel="noopener noreferrer" style="color: white" target="_blank"><img class="social-img" [src]="'assets/img/twitter.svg'" alt=""></a>
+          <a href="https://www.linkedin.com/in/jancobh/" aria-label="LinkedIn" rel="noopener noreferrer" style="color: white" target="_blank"><img class="social-img" [src]="'assets/img/linkedin.svg'" alt=""></a>
+          <a href="https://github.com/JancoBH" style="color: white" aria-label="GitHub" rel="noopener noreferrer" target="_blank"><img class="social-img" [src]="'assets/img/github.svg'" alt=""></a>
+        </div>
+
+      </mat-toolbar>
+
+      <!--Routing-->
+      <router-outlet></router-outlet>
+
+      <app-footer></app-footer>
+
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+</div>
