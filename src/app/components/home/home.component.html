@@ -1,35 +1,24 @@
 <section class="main">
-
-  <div class="content">
-    <h1>Hola, Mi nombre es Janco Boscan</h1>
-
-    <div style="display: inline-flex">
-      <span class="content__corchete">{{'{'}}</span>
-
-      <div class="content__container">
-        <p class="content__container__text">
-          Hello:
-        </p>
-
-        <ul class="content__container__list">
-          <li class="content__container__list__item">Angular !</li>
-          <li class="content__container__list__item">Web !</li>
-          <li class="content__container__list__item">Front-end !</li>
-          <li class="content__container__list__item">Javascript !</li>
-        </ul>
-      </div>
-
-      <span class="content__corchete">{{'}'}}</span>
+  <main>
+    <div class="contenedor-img">
+      <img [src]="'assets/html-css-js.svg'" alt="">
     </div>
-  </div>
+    <div class="contenedor-texto">
+      <h1>Hola, Mi nombre es Janco Boscan</h1>
+      <h2 class="titulo">Hello <span class="content__corchete"> {{'{'}} </span> <span class="typed"></span> <span class="content__corchete"> {{'}'}} </span></h2>
+
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate architecto officia nulla laudantium minus rerum accusamus?</p>
+
+      <a href="#" mat-raised-button color="primary">Reserva ahora</a>
+      <a mat-stroked-button color="primary" routerLink=".">Conocenos</a>
+    </div>
+  </main>
 
 </section>
 
 <section class="tutorial">
 
-  <h1 style="text-align: center; color: white; margin: 20px 0">Últimos Tutoriales</h1>
-
-  <!--<div class="skeleton"></div>-->
+  <h1>Últimos Tutoriales</h1>
 
   <div fxLayout="row wrap" style="justify-content: center; align-items: center;">
 
@@ -100,7 +89,7 @@
 
 <section class="blog">
 
-  <h1 style="text-align: center; color: white; margin: 20px 0">Últimas entradas al Blog</h1>
+  <h1>Últimas entradas al Blog</h1>
 
   <div fxLayout="row wrap" style="justify-content: center; align-items: center; margin-bottom: 25px">
 
@@ -134,7 +123,7 @@
 
   <div fxLayout="row wrap" class="tecnologias-container">
 
-    <h1 fxFlex="100" style="text-align: center; color: white; margin: 20px 0">Algunas Tecnologías que aprenderás acá</h1>
+    <h1 fxFlex="100">Algunas Tecnologías que aprenderás acá</h1>
 
     <div fxFlex="10" fxFlex.sm="5" fxFlex.xs="5"></div>
 

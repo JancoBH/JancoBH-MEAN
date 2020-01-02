@@ -2,14 +2,14 @@
 @import '~@angular/material/theming';
 @include mat-core();
 
-$app-primary: mat-palette($mat-grey, 900);
+$app-primary: mat-palette($mat-red, 700);
 $app-accent: mat-palette($mat-red, A700);
 
 // The warn palette is optional (defaults to red).
 $app-warn: mat-palette($mat-grey, 50);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$app-theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 @include angular-material-theme($app-theme);
 
