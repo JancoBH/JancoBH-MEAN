@@ -56,11 +56,11 @@ export class HomeComponent implements OnInit {
 
     const options = {
       strings: [
-        '<i class="mascota">Angular</i>',
-        '<i class="mascota">React</i>',
-        '<i class="mascota">Vue</i>',
-        '<i class="mascota">Javascript</i>',
-        '<i class="mascota">Front-end</i>',
+        '<i class="text-tecnologia">Angular</i>',
+        '<i class="text-tecnologia">React</i>',
+        '<i class="text-tecnologia">Vue</i>',
+        '<i class="text-tecnologia">Javascript</i>',
+        '<i class="text-tecnologia">Front-end</i>',
       ],
       stringsElement: '#cadenas-texto', // ID del elemento que contiene cadenas de texto a mostrar.
       typeSpeed: 75, // Velocidad en mlisegundos para poner una letra,
@@ -77,6 +77,10 @@ export class HomeComponent implements OnInit {
 
     const typed = new Typed('.typed', options);
 
+  }
+
+  scrollToElement(e): void {
+    e.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
   }
 
 }

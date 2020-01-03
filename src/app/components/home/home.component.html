@@ -1,22 +1,22 @@
-<section class="main">
+<section class="main-content section-content">
   <main>
     <div class="contenedor-img">
-      <img [src]="'assets/html-css-js.svg'" alt="">
+      <img [src]="'assets/code-review-red.svg'" alt="">
     </div>
     <div class="contenedor-texto">
       <h1>Hola, Mi nombre es Janco Boscan</h1>
-      <h2 class="titulo">Hello <span class="content__corchete"> {{'{'}} </span> <span class="typed"></span> <span class="content__corchete"> {{'}'}} </span></h2>
+      <h2 class="titulo">Hello <span class="corchete"> {{'{'}} </span> <span class="typed"></span> <span class="corchete"> {{'}'}} </span></h2>
 
       <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate architecto officia nulla laudantium minus rerum accusamus?</p>
 
-      <a href="#" mat-raised-button color="primary">Reserva ahora</a>
-      <a mat-stroked-button color="primary" routerLink=".">Conocenos</a>
+      <a routerLink="." mat-raised-button color="primary">Contactame</a>
+      <a mat-stroked-button color="primary" routerLink="." style="margin: 0 10px;">Tutoriales</a>
+      <a mat-stroked-button color="primary" routerLink="." (click)="scrollToElement(tabScrollBlogs)">Blogs</a>
     </div>
   </main>
-
 </section>
 
-<section class="tutorial">
+<section class="tutorial section-content">
 
   <h1>Últimos Tutoriales</h1>
 
@@ -50,44 +50,26 @@
 
 </section>
 
-<section class="whois">
+<section class="whois section-content">
 
   <div fxLayout="row wrap">
-
-    <div fxFlex="50" fxFlex.xs="100" class="quien-soy">
-
+    <div fxFlex="50" fxFlex.xs="100">
       <h1>¿Quien soy?</h1>
-
-      <p>
-        Hola, mi nombre es Janco Boscan, Soy Ingeniero de Computación y me dedico a trabajar como Front-end Developer.
-      </p>
-
-      <p>
-        Soy una persona autodidacta con mucho interes en las tecnologías web como lo son Javascript y sus frameworks más populares, en especial Angular
-      </p>
-
+      <p>Hola, Mi nombre es Janco Boscan, Soy Ingeniero de Computación y trabajo como Front-end Developer.</p>
+      <p>Soy una persona autodidacta con mucho interés en las tecnologías web, mi mayor experiencia se centra con Angular pero también uso y me gustran otras tecnologías.</p>
     </div>
 
-    <div fxFlex="50" fxFlex.xs="100"  class="por-que">
-
+    <div fxFlex="50" fxFlex.xs="100">
       <h1>¿Por qué esta web?</h1>
-
-      <p>
-        Esta web nace con el proposito de compartir mis conocimientos sobre Javascript y otras tecnologías a la comunidad de desarrolladores web
-      </p>
-
-      <p>
-        Aunque la web lleve mi nombre y también me sirva como una especie de portafolios, el objetivo principal de esta web es poder ayudar a todas aquellas personas que
-        tengan ciertos problemas o desconocimientos con algunos temas de Frameworks o Librerias Javascript.
-      </p>
-
+      <p>El proposito de esta web es compartir mis conocimientos sobre Javascript y otras tecnologías a la comunidad de desarrolladores.</p>
+      <p>Esta web lleva mi nombre pero espero que les sirva también a todas aquellas personas que necesiten tener algún conocimiento extra sobre las tecnologías que aquí se hablan.</p>
     </div>
-
   </div>
 
 </section>
 
-<section class="blog">
+<div #tabScrollBlogs></div>
+<section class="blog section-content">
 
   <h1>Últimas entradas al Blog</h1>
 
@@ -116,10 +98,9 @@
 
   </div>
 
-
 </section>
 
-<section class="what">
+<section class="tecnologias section-content">
 
   <div fxLayout="row wrap" class="tecnologias-container">
 
@@ -144,3 +125,13 @@
   </div>
 
 </section>
+
+<!--<section class="contacto">-->
+<!--  <div fxLayout="row wrap" class="contacto-container">-->
+
+<!--    <h1 fxFlex="100">Contactame</h1>-->
+
+<!--  </div>-->
+
+
+<!--</section>-->

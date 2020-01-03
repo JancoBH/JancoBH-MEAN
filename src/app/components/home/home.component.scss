@@ -1,74 +1,64 @@
-.main { /* fallback for old browsers */
-  //background: #e52d27; /* fallback for old browsers */
-  //background: -webkit-linear-gradient(to right, rgba(229,45,39, 0.96), rgba(179,18,23, 0.96)), url("https://firebasestorage.googleapis.com/v0/b/jancobh-2.appspot.com/o/general%2Ffreebay.png?alt=media&token=75bf00ca-41ad-42ce-8b8b-69a7c0420113"); /* Chrome 10-25, Safari 5.1-6 */
-  //background: linear-gradient(to right, rgba(229,45,39, 0.96), rgba(179,18,23, 0.96)), url("https://firebasestorage.googleapis.com/v0/b/jancobh-2.appspot.com/o/general%2Ffreebay.png?alt=media&token=75bf00ca-41ad-42ce-8b8b-69a7c0420113"); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: #ffffff;
+// same config
+
+.section-content {
   padding: 40px;
 }
 
-main {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+.tutorial h1, .blog h1, .tecnologias h1 {
+  text-align: center; margin: 20px 0; color: #d32f2f;
 }
 
-main .contenedor-img {
+// main
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+.main-content {
+  background: #ffffff;
+
+  main {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
 
-  max-width: 50%;
-  margin-right: 40px;
-}
+  main .contenedor-img {
 
-.contenedor-texto .titulo {
-  font-size: 50px;
-  font-weight: normal;
-  margin-bottom: 40px;
-}
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
 
-.contenedor-texto {
-  .mascota {
-    font-weight: bold;
-    color: #c99806;
-    font-style: normal;
+    max-width: 50%;
+    margin-right: 40px;
+  }
+
+  .contenedor-texto .titulo {
+    font-size: 50px;
+    font-weight: normal;
+    margin-bottom: 40px;
+  }
+
+  .contenedor-texto {
+    .text-tecnologia {
+      font-weight: bold;
+      color: #c99806;
+      font-style: normal;
+    }
+  }
+
+  .contenedor-texto p {
+    margin-bottom: 40px;
+    line-height: 36px;
   }
 }
 
-.contenedor-texto p {
-  margin-bottom: 40px;
-  line-height: 36px;
-}
-
-// aca inicia
-
-.content h1 {
-  margin: 2px 0 20px 0;
-  font-size: 2.5rem;
-}
-
-.content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-
-  font-size: 35px;
-  line-height: 45px;
-
-  &__corchete{
-    -webkit-animation-name: opacity;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-iteration-count: infinite;
-    animation-name: opacity;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-  }
+// corchete
+.corchete {
+  -webkit-animation-name: opacity;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-name: opacity;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
 }
 
 @-webkit-keyframes opacity {
@@ -93,14 +83,7 @@ main .contenedor-img {
 
 // aca finaliza
 
-.tutorial h1, .blog h1, .what h1 {
-  text-align: center; margin: 20px 0; color: #d32f2f;
-}
-
-.tutorial {
-  min-height: 400px;
-  padding: 40px;
-}
+.tutorial {}
 
 .tutorial-content p {
   height: 50px;
@@ -115,81 +98,47 @@ main .contenedor-img {
   background: #d32f2f;
   background-size: cover;
   color: white;
-  min-height: 350px;
-}
 
-.whois h1 {
-  text-align: center;
-  margin: 20px 0;
-}
+  h1 {text-align: center;margin: 20px 0;}
+  p {margin: 20px;}
 
-.whois p {
-  margin: 20px;
 }
-
 // Blog
 
 .blog {
   background: #ffffff;
 }
 
-.blog-content p {
-  height: 50px;
-}
-
-// what
-
-.what {
-  min-height: 400px;
-}
+// tecnologias
+.tecnologias-container {}
 
 // Breakpoints
 
 // xs
 @media (max-width: 599px) {
 
-  main {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  main .contenedor-img {
-    margin-top: 40px;
-    margin-bottom: 20px;
+  .main-content {
+    main {flex-direction: column;text-align: center;}
+    main .contenedor-img {margin-top: 40px;margin-bottom: 20px;}
+    .contenedor-texto .titulo {font-size: 40px;}
   }
 
   .tutorial {margin: 30px 0; }
-  .blog {margin: 30px 0; }
-  .content h1 {margin: 0 15px 30px 15px;}
-  .tutorial-content p {height: 100%;}
-  .blog-content p {height: 100%;}
-
-  .whois .quien-soy {margin-top: 20px}
-  .whois .por-que {margin-bottom: 20px}
   .whois p {margin: 15px;}
-
-  .tecnologias-container {padding-bottom: 20px;}
 }
 
 // sm
 @media (min-width: 600px) and (max-width: 959px) {
-  .content h1 {margin: 0 20px 30px 20px;}
-  .tecnologias-container {padding-bottom: 20px;}
 
-  main {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  main .contenedor-img {
-    margin-bottom: 40px;
+  .main-content{
+    main {flex-direction: column;text-align: center;}
+    main .contenedor-img {margin-bottom: 40px;}
   }
 
 }
 
 // md
 @media (min-width: 960px) and (max-width: 1279px) {
-  .tecnologias-container {padding-bottom: 20px;}
 }
 
 @media (min-width: 1280px) and (max-width: 1919px) {

@@ -1,113 +1,57 @@
 .tutorial-header-content {
-  display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  height: 450px;
-  color: white;
-}
-
-.tutorial-header-content h1 {
-  font-size: 3.5rem;
-  text-transform: uppercase;
-  text-align: center;
-  font-weight: 500;
-  margin: 0;
-}
-
-.tutorial-header-content p {
-  font-size: 2rem;
-  line-height: 39px;
-  text-transform: uppercase;
-  text-align: center;
-  margin: 0 20%;
-  padding-top: 20px;
-  font-weight: 300;
+  padding: 40px;
 }
 
 .info-tutorial-card {
-  width: 300px; position: absolute; right: 30px; top: 340px;
+  width: 300px; position: absolute; right: 30px;
 }
 
 .info-tutorial-card-container {
-}
+  .button-row {
+    img {height: 20px;}
+    button {margin-right: 10px;}
+  }
 
-.info-tutorial-card-container .button-row {
-  text-align: center;
-}
-
-.info-tutorial-card-container .button-row button {
-  margin: 10px;
 }
 
 .lista-pasos {
   padding: 0;
   list-style: none;
+
+  li {
+    padding: 8px 0; text-align: left;
+    font-weight: 900; font-size: 1.2rem;
+
+    a {text-decoration: none;color: #d32f2f;}
+  }
+
 }
 
-.lista-pasos li {
-  padding: 8px 0; text-align: left;
-  font-weight: 900; font-size: 1.2rem;
+// relacion
+.relation-container {
+  a {margin-right: 10px;}
 }
-
-.lista-pasos li a {
-  text-decoration: none;
-  //color: #d32f2f;
-  color: #d32f2f;
-}
-
-// Tags
-
-.tags-container {
-  position: relative; top: 90px;
-  letter-spacing: .18ch;
-}
-
-
-
 
 // Contenido
 
 .tutorial-detail-content {
-  min-height: 70vh;
-  margin-top: 40px;
   line-height: 1.7;
-}
 
-.tutorial-detail-content p {
-  font-size: 1.1rem;
-}
+  h2 {margin: 10px 0;}
+  ul {padding: 0;list-style: none;}
 
-.tutorial-detail-content h2 {
-  font-size: 2rem;
-  margin: 10px 0;
-}
-
-.tutorial-detail-content ul {
-  padding: 0;
-  list-style: none;
 }
 
 // xs
 @media (max-width: 599px) {
-  .tutorial-header-content h1 {
-    font-size: 2.5rem;
-  }
-  .tutorial-header-content p {
-    font-size: 1.5rem;
-    line-height: 30px;
-    margin: 0 7%;
-  }
 }
 
 // sm
 @media (min-width: 600px) and (max-width: 959px) {
-
 }
 
 // md
 @media (min-width: 960px) and (max-width: 1279px) {
-
 }
 
 @media (min-width: 1280px) and (max-width: 1919px) {

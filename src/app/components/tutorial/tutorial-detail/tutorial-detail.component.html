@@ -1,52 +1,40 @@
-<section class="tutorial-header-content" [ngStyle]="{'background': 'linear-gradient(to right,' + tutorialData?.colors[0] + ', ' + tutorialData?.colors[1] + ')'}">
-  <div fxFlex="10" fxHide.sm fxFlex.xs="5"></div>
+<section class="tutorial-header-content">
+  <h1>{{tutorialData?.title | uppercase}}</h1>
+  <p>{{tutorialData?.desc}}</p>
 
-  <div fxFlex="80" fxFlex.xs="90">
-    <h1>{{tutorialData?.title}}</h1>
-    <p>
-      {{tutorialData?.desc}}
-    </p>
+  <div class="relation-container">
+    <a mat-stroked-button color="primary" routerLink=".">Hosting</a>
+    <a mat-stroked-button color="primary" routerLink=".">Font-awesome</a>
+    <a mat-stroked-button color="primary" routerLink=".">Firebase</a>
+    <a mat-stroked-button color="primary" routerLink=".">Angular</a>
+  </div>
 
-    <div class="tags-container">
-      <mat-chip-list>
-        <mat-chip class="mat-elevation-z4">#Hosting</mat-chip>
-        <mat-chip class="mat-elevation-z4">#Font-awesome</mat-chip>
-        <mat-chip class="firebase-tag mat-elevation-z4">#Firebase</mat-chip>
-        <mat-chip class="angular-tag mat-elevation-z4">#Angular</mat-chip>
-      </mat-chip-list>
-    </div>
+  <mat-card class="info-tutorial-card mat-elevation-z8">
 
-    <mat-card class="info-tutorial-card mat-elevation-z8">
+    <img mat-card-image [src]="tutorialData?.img" [alt]="tutorialData?.title">
 
-      <img mat-card-image [src]="tutorialData?.img" [alt]="tutorialData?.title">
+    <div class="info-tutorial-card-container">
 
-      <div class="info-tutorial-card-container">
+      <div class="button-row">
+        <button mat-stroked-button color="primary">
+          <img [src]="'../../../../assets/img/stackblitz.svg'" alt="">
+          Demo
+        </button>
+        <button mat-raised-button color="primary">Código</button>
 
-        <div class="button-row">
-          <button mat-raised-button color="warn">
-            <img [src]="'../../../../assets/img/stackblitz.svg'" alt="" style="height: 20px;">
-            Demo
-          </button>
-          <button mat-raised-button color="accent">Código</button>
-
-          <div>
-            <ul class="lista-pasos">
-              <li><a href="javascript:void(0)">⭐ Paso 0 - Requisitos previos</a></li>
-              <li><a href="javascript:void(0)">⭐ Paso 1 - Configurar...</a></li>
-              <li><a href="javascript:void(0)">⭐ Paso 1 - Renderizar...</a></li>
-            </ul>
-          </div>
-
+        <div>
+          <ul class="lista-pasos">
+            <li><a href="javascript:void(0)">⭐ Paso 0 - Requisitos previos</a></li>
+            <li><a href="javascript:void(0)">⭐ Paso 1 - Configurar...</a></li>
+            <li><a href="javascript:void(0)">⭐ Paso 1 - Renderizar...</a></li>
+          </ul>
         </div>
 
       </div>
 
-    </mat-card>
+    </div>
 
-  </div>
-
-  <div fxFlex="10" fxHide.sm fxFlex.xs="5"></div>
-
+  </mat-card>
 </section>
 
 <section class="tutorial-detail-content">

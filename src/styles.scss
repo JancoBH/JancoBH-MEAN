@@ -13,7 +13,7 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 @include angular-material-theme($app-theme);
 
-html, body { height: 100%; background: #333333; }
+html, body { height: 100%; }
 body { margin: 0; font-family: 'Roboto', sans-serif; }
 
 .float-right { float: right; }
@@ -103,7 +103,7 @@ $color-highlight: lighten($color-base, 7%);
 }
 
 .loading h2 {
-  color: #ccc;
+  color: #212121;
   margin: 0;
   font: .8em verdana;
   text-transform: uppercase;
