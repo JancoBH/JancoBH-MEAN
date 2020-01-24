@@ -15,7 +15,7 @@
 
   main {
     display: flex;
-    justify-content: flex-end;
+    //justify-content: center;
     align-items: center;
   }
 
@@ -31,24 +31,23 @@
     margin-right: 40px;
   }
 
-  .contenedor-texto .titulo {
-    font-size: 50px;
-    font-weight: normal;
-    margin-bottom: 40px;
-  }
-
   .contenedor-texto {
+
+    .titulo {
+      font-size: 50px;
+      font-weight: normal;
+      margin-bottom: 40px;
+    }
+
     .text-tecnologia {
       font-weight: bold;
       color: #c99806;
       font-style: normal;
     }
+
+    p {margin-bottom: 40px;line-height: 36px;}
   }
 
-  .contenedor-texto p {
-    margin-bottom: 40px;
-    line-height: 36px;
-  }
 }
 
 // corchete
@@ -118,8 +117,8 @@
 @media (max-width: 599px) {
 
   .main-content {
-    main {flex-direction: column;text-align: center;}
-    main .contenedor-img {margin-top: 40px;margin-bottom: 20px;}
+    main {flex-direction: column; text-align: center;}
+    main .contenedor-img {margin-top: 40px; margin-bottom: 20px;}
     .contenedor-texto .titulo {font-size: 40px;}
   }
 
@@ -131,7 +130,7 @@
 @media (min-width: 600px) and (max-width: 959px) {
 
   .main-content{
-    main {flex-direction: column;text-align: center;}
+    main {flex-direction: column; text-align: center;}
     main .contenedor-img {margin-bottom: 40px;}
   }
 
