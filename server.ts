@@ -1,75 +1,60 @@
 import 'zone.js/dist/zone-node';
-import {enableProdMode} from '@angular/core';
-// Express Engine
-import {ngExpressEngine} from '@nguniversal/express-engine';
-// Import module map for lazy loading
-import {provideModuleMap} from '@nguniversal/module-map-ngfactory-loader';
 
-import * as bodyParser from 'body-parser';
+import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
-import * as mongoose from 'mongoose';
-import * as compression from 'compression';
-import {join} from 'path';
-import setRoutes from './src/server/routes/api.routes';
+import { join } from 'path';
 
-// Faster server renders w/ Prod mode (dev mode never needed)
-enableProdMode();
+import { AppServerModule } from './src/main.server';
+import { APP_BASE_HREF } from '@angular/common';
+import { existsSync } from 'fs';
 
-// Express server
-const app = express();
+// The Express app is exported so that it can be used by serverless Functions.
+export function app(): express.Express {
+  const server = express();
+  const distFolder = join(process.cwd(), 'dist/browser');
+  const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
-const PORT = process.env.PORT || 4000;
-const DIST_FOLDER = join(process.cwd(), 'dist/browser');
+  // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
+  server.engine('html', ngExpressEngine({
+    bootstrap: AppServerModule,
+  }));
 
-// * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require('./dist/server/main');
+  server.set('view engine', 'html');
+  server.set('views', distFolder);
 
-// Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
-app.engine('html', ngExpressEngine({
-  bootstrap: AppServerModuleNgFactory,
-  providers: [
-    provideModuleMap(LAZY_MODULE_MAP)
-  ]
-}));
+  // Example Express Rest API endpoints
+  // server.get('/api/**', (req, res) => { });
+  // Serve static files from /browser
+  server.get('*.*', express.static(distFolder, {
+    maxAge: '1y'
+  }));
 
-app.set('view engine', 'html');
-app.set('views', DIST_FOLDER);
+  // All regular routes use the Universal engine
+  server.get('*', (req, res) => {
+    res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+  });
 
-app.use((req, res, next) => {
-  // res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
-  // res.header('Access-Control-Allow-Origin', 'http://localhost:4201');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
-  next();
-});
+  return server;
+}
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+function run(): void {
+  const port = process.env.PORT || 4000;
 
+  // Start up the Node server
+  const server = app();
+  server.listen(port, () => {
+    console.log(`Node Express server listening on http://localhost:${port}`);
+  });
+}
 
-setRoutes(app);
-app.use(require('prerender-node'));
-app.use(compression());
+// Webpack will replace 'require' with '__webpack_require__'
+// '__non_webpack_require__' is a proxy to Node 'require'
+// The below code is to ensure that the server is run only when not requiring the bundle.
+declare const __non_webpack_require__: NodeRequire;
+const mainModule = __non_webpack_require__.main;
+const moduleFilename = mainModule && mainModule.filename || '';
+if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
+  run();
+}
 
-app.get('*.*', express.static(DIST_FOLDER, {
-  maxAge: '5d'
-}));
-
-// All regular routes use the Universal engine
-app.get('*', (req, res) => {
-  res.render('index', { req });
-});
-// Start up the Node server && MongoDB
-// F4Ul15eut9ohc2Mz
-const uri = 'mongodb+srv://jancobh:janco23443970@jancobh-vuhbb.mongodb.net/JancoBH?retryWrites=true';
-mongoose.connect(uri, { useNewUrlParser: true })
-  .then(() => {
-    console.log(`Connected to MongoDB in Atlas`);
-    // Start up the Node server
-    app.listen(PORT, () => {
-      console.log(`Node Express server listening on http://localhost:${PORT}`);
-    });
-
-  })
-  .catch(err => console.error(err)
-  );
+export * from './src/main.server';

@@ -57,7 +57,11 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
+
               ],
               "serviceWorker": true,
               "ngswConfigPath": "src/ngsw-config.json"
@@ -116,7 +120,7 @@
           "builder": "@angular-devkit/build-angular:server",
           "options": {
             "outputPath": "dist/server",
-            "main": "src/main.server.ts",
+            "main": "server.ts",
             "tsConfig": "tsconfig.server.json"
           },
           "configurations": {
@@ -128,6 +132,32 @@
                 }
               ]
             }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "JancoBH-MEAN:build",
+            "serverTarget": "JancoBH-MEAN:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "JancoBH-MEAN:build:production",
+              "serverTarget": "JancoBH-MEAN:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "JancoBH-MEAN:build:production",
+            "serverTarget": "JancoBH-MEAN:server:production",
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
