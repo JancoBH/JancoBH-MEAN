@@ -2,11 +2,15 @@ import 'zone.js/dist/zone-node';
 
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
+import * as mongoose from 'mongoose';
+import * as compression from 'compression';
+import * as bodyParser from 'body-parser';
 import { join } from 'path';
+import setRoutes from './src/server/routes/api.routes';
 
 import { AppServerModule } from './src/main.server';
-import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
+import {APP_BASE_HREF} from '@angular/common';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -21,6 +25,22 @@ export function app(): express.Express {
 
   server.set('view engine', 'html');
   server.set('views', distFolder);
+
+  server.use((req, res, next) => {
+    // res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+    // res.header('Access-Control-Allow-Origin', 'http://localhost:4201');
+    // res.header('Access-Control-Allow-Origin', 'http://192.168.0.9:4200');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+    next();
+  });
+
+  server.use(bodyParser.json());
+  server.use(bodyParser.urlencoded({ extended: false }));
+
+  setRoutes(server);
+  server.use(require('prerender-node'));
+  server.use(compression());
 
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
@@ -42,9 +62,18 @@ function run(): void {
 
   // Start up the Node server
   const server = app();
-  server.listen(port, () => {
-    console.log(`Node Express server listening on http://localhost:${port}`);
-  });
+  const uri = 'mongodb+srv://jancobh:janco23443970@jancobh-vuhbb.mongodb.net/JancoBH?retryWrites=true';
+  mongoose.connect(uri, { useNewUrlParser: true, useFindAndModify: false})
+    .then(() => {
+      console.log(`Connected to MongoDB in Atlas`);
+      // Start up the Node server
+      server.listen(port, () => {
+        console.log(`Node Express server listening on http://localhost:${port}`);
+      });
+
+    })
+    .catch(err => console.error(err)
+    );
 }
 
 // Webpack will replace 'require' with '__webpack_require__'
