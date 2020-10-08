@@ -62,7 +62,7 @@ function run(): void {
 
   // Start up the Node server
   const server = app();
-  const uri = 'mongodb+srv://jancobh:janco23443970@jancobh-vuhbb.mongodb.net/JancoBH?retryWrites=true';
+  const uri = '';
   mongoose.connect(uri, { useNewUrlParser: true, useFindAndModify: false})
     .then(() => {
       console.log(`Connected to MongoDB in Atlas`);
