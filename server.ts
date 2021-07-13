@@ -39,7 +39,7 @@ export function app(): express.Express {
   server.use(bodyParser.urlencoded({ extended: false }));
 
   setRoutes(server);
-  server.use(require('prerender-node'));
+  // server.use(require('prerender-node'));
   server.use(compression());
 
   // Example Express Rest API endpoints
